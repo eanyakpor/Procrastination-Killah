@@ -10,6 +10,8 @@ backend/procrastination-killah-firebase-adminsdk-d0uav-56e96c5979.json
 # Ignore node_modules globally
 node_modules/
 
+#Ignore openai_integration
+openai_integration/
 
 # dependencies
 /.pnp
