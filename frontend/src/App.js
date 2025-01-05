@@ -3,9 +3,14 @@ import React, { useState } from 'react';
 import { database } from "./firebase.js";
 import { ref, push } from "firebase/database";
 import { ref as sRef } from 'firebase/storage';
+import { generateText } from "./utils/api.js";
+
 
 function App() {
+  // states to manage user input and Ai output 
   const [inputValue, setInputValue] = useState("");
+  const [aiResponse, setAiResponse] = useState("");
+
   const dbRef = ref(database, "inputs");
   // handle input change 
   const handleInputChange = (e) => {
@@ -20,13 +25,12 @@ function App() {
       return;
     }
     try {
-      // Push the input value into Firebase 
-      await push(dbRef, { value: inputValue, timestamp: Date.now() });
-      alert("Data Submitted Succesfully!");
-      setInputValue("") // Clear the input field
+      console.log("inputted value", inputValue)
+      const response = await generateText(inputValue); // Call backend API
+      setAiResponse(response);
     } catch (error) {
-      console.error("Error submitting data: ", error);
-      alert("An error occurred while submitting data.");
+      console.error("Error generating AI response:", error);
+      alert("Failed to generate AI response.");
     }
   }
   return (
@@ -44,6 +48,12 @@ function App() {
           Submit
         </button>
       </form>
+      {aiResponse && (
+        <div>
+          <h2>AI Response:</h2>
+          <p>{aiResponse}</p>
+        </div>
+      )}
     </div>
   );
 }

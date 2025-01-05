@@ -4,7 +4,10 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
-import { getDatabase } from "firebase/database";
+import { getDatabase, onValue } from "firebase/database";
+import { ref, push } from "firebase/database";
+import { ref as sRef } from 'firebase/storage';
+
 // require("dotenv").config();
 
 
@@ -23,10 +26,33 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+export const database = getDatabase(app);
 // const analytics = getAnalytics(app);
 // export const auth = getAuth(app);
 // export const db = getFirestore(app);
 // export const storage = getStorage(app);
-export const database = getDatabase(app);
+
+// Function to save user input to Firebase
+export const saveUserInput = async (inputValue) => {
+  const dbRef = ref(database, "inputs");
+  try {
+    await push(dbRef, { value: inputValue, timestamp: Date.now() });
+    console.log("Data saved successfully!");
+  } catch (error) {
+    console.error("Error saving data to Firebase:", error);
+  }
+};
+
+// Function to listen for new data
+export const listenForUpdates = (callback) => {
+  const dbRef = ref(database, "inputs");
+  onValue(dbRef, (snapshot) => {
+    const data = snapshot.val();
+    if (data) {
+      const lastInput = Object.values(data).pop().value; // Get the last input
+      callback(lastInput);
+    }
+  });
+};
 
 export default app;

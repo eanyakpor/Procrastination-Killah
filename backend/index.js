@@ -1,20 +1,29 @@
-require("dotenv").config();
+const express = require("express");
+const { generateText } = require("./openai"); // Import your function
+const cors = require("cors");
 
+const app = express();
+app.use(express.json());
+app.use(cors()); // Allow cross-origin requests from frontend
 
-const { OpenAI } = require("openai");
+// Define a POST endpoint for generateText
+app.post("/api/generate-text", async (req, res) => {
+  const { input } = req.body; // Expecting input from the frontend
+  if (!input) {
+    return res.status(400).json({ error: "Input is required" });
+  }
 
-const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
+  try {
+    const response = await generateText(input); // Call the generateText function
+    res.json({ result: response });
+  } catch (error) {
+    console.error("Error generating text:", error);
+    res.status(500).json({ error: "Failed to generate text" });
+  }
 });
 
-const completion = openai.chat.completions.create({
-    model: "gpt-3.5-turbo",
-    store: true,
-    messages: [
-      {"role": "user", "content": "write a haiku about ai"},
-    ],
-  });
-  
-  completion
-  .then((result) => console.log(result.choices[0]))
-  .catch((error) => console.error(error));
+// Start the server
+const PORT = 5001; // Use any available port
+app.listen(PORT, () => {
+  console.log(`Backend is running on http://localhost:${PORT}`);
+});
