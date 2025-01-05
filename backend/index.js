@@ -29,21 +29,16 @@ app.post("/find-complexity", async (req, res) => {
             presence_penalty: 0.0,
         });
 
-        return res.status(200).json({
-            success: true,
-            data: response.choices[0].message.content.trim(), // Use .message.content for chat-based models
-        });
-
-        /*if (response.choices && response.choices.length > 0) {
+        if (response.choices && response.choices.length > 0) {
             return res.status(200).json({
                 success: true,
                 data: response.choices[0].message.content.trim(), // Access the response properly
             });
         } else {
             throw new Error("No response from OpenAI");
-        }*/
+        }
     }catch (error) {
-        //console.error(error);
+        console.error(error);
         return res.status(400).json({
             success: false,
             error: error.response ? error.response.data : "There was an issue on the server",
