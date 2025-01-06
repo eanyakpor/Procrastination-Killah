@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './HomePage.css';
 
 const HomePage = () => {
@@ -13,36 +14,36 @@ const HomePage = () => {
     setIsModalOpen(!isModalOpen);
   };
 
+  const navigate = useNavigate();
 
-  // Smooth scroll to the Sign In section
-  const scrollToSignIn = () => {
-    const signInSection = document.getElementById('sign-in');
-    signInSection.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
+  const navigateToSignUp = () => {
+    navigate('./SignUp');
+  };
+
+  const navigateToLogin = () => {
+    navigate('./Login');
+  };
+
+
+
+  // Smooth scrolling function
+  const handleScrollToFaq = (e) => {
+    e.preventDefault(); // Prevent the default anchor link behavior
+    const faqSection = document.querySelector('#faq');
+    const offset = 40; // Adjust this value to control the stop point
+
+    window.scrollTo({
+      top: faqSection.offsetTop - offset, // Scroll position with offset
+      behavior: 'smooth', // Smooth scrolling effect
     });
   };
 
   return (
     <>
       <nav>
-        <h3>SyllabAI</h3>
-        <a href="#faq">FAQ</a>
-        <div className="hamburger-menu">
-          <div className="hamburger-icon" onClick={toggleMenu}>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-          <div className={`menu-links ${isMenuOpen ? 'open' : ''}`}>
-            <ul>
-              <li><a href="#about" onClick={toggleMenu}>About</a></li>
-              <li><a href="#experience" onClick={toggleMenu}>Experience</a></li>
-              <li><a href="#project" onClick={toggleMenu}>Projects</a></li>
-              <li><a href="#contact" onClick={toggleMenu}>Contacts</a></li>
-            </ul>
-          </div>
-        </div>
+        <a onClick={navigateToLogin}><h3>SyllabAI</h3></a>
+        <a onClick={navigateToSignUp}><h3>Sign Up</h3></a>
+        <a href="#faq" onClick={handleScrollToFaq}><h3>FAQ</h3></a> {/* Update to use smooth scroll */}
       </nav>
 
       <section id="story">
@@ -83,30 +84,19 @@ const HomePage = () => {
         </div>
       </section>
 
-      <section className="sign-in" id="sign-in">
-        <form>
-          <h1>SyllabAI</h1>
-          <label htmlFor="username">Username:</label>
-          <input id="username" type="text" placeholder="Enter your username" />
-          
-          <label htmlFor="email">Email:</label>
-          <input id="email" type="email" placeholder="Enter your email" />
-          
-          <button id="submit-button" type="submit">Submit</button>
-        </form>
+      <Modal isOpen={isModalOpen} onClose={toggleModal} navigateToSignUp={navigateToSignUp} />
+
+      <section id="footer-section">
+        <footer>
+          <p>&copy; {new Date().getFullYear()} SyllabAI. All rights reserved.</p>
+        </footer>
       </section>
-
-      <Modal isOpen={isModalOpen} onClose={toggleModal} scrollToSignIn={scrollToSignIn} />
-
-      <footer>
-        <p>&copy; {new Date().getFullYear()} SyllabAI. All rights reserved.</p>
-      </footer>
     </>
   );
 };
 
 // Modal Component
-const Modal = ({ isOpen, onClose, scrollToSignIn }) => {
+const Modal = ({ isOpen, onClose, navigateToSignUp }) => {
   if (!isOpen) return null;
 
   return (
@@ -125,7 +115,7 @@ const Modal = ({ isOpen, onClose, scrollToSignIn }) => {
         <p>
           Ready to transform the way you study? Sign up today and take the first step towards academic success!
         </p>
-        <button onClick={() => { onClose(); scrollToSignIn(); }} className="cta-button">Sign Up!</button>
+        <button onClick={() => { onClose(); navigateToSignUp(); }} className="cta-button">Sign Up!</button>
       </div>
     </div>
   );

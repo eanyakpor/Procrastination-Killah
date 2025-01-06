@@ -1,0 +1,99 @@
+/* General reset */
+
+.sign-up {
+  padding: 2rem 1rem;
+  display: flex;
+  justify-content: center;
+  background-color: #fafafa;
+  margin-top: -1.5rem;
+}
+
+
+.sign-up form {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  max-width: 400px;
+  width: 100%;
+  margin-top: 3.5rem;
+  height: 550px;
+}
+
+.sign-up form h1 {
+  margin-top: 0rem;
+  margin-bottom: 1rem;
+  color: #333;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.sign-up form p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+
+.sign-up label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.sign-up input {
+  width: 93%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+ /* Error message styling */
+ .sign-up .error {
+  color: red;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.sign-up button {
+  width: 100%;
+  padding: 0.8rem 1.5rem;
+  color: #fff;
+  background-color: #00509e;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.sign-up button:hover {
+  background-color: #003f7f;
+}
+
+#login-link {
+  color: #00509e;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#signup-span {
+  display: block;           /* Make it a block-level element */
+  text-align: center;       /* Center the text */
+  margin-top: 1rem;         /* Add spacing above the link */
+}
+
+#login-link:hover {
+  text-decoration: underline;
+}
+
+
+
+

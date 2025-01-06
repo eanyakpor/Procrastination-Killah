@@ -13,86 +13,6 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Hamburger Menu Styles */
-.hamburger-menu {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  display: none; /* Hidden by default for larger screens */
-}
-
-/* Hamburger Icon */
-.hamburger-icon {
-  width: 30px;
-  height: 25px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.hamburger-icon span {
-  width: 100%;
-  height: 4px;
-  background-color: #333;
-  border-radius: 5px;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-/* Animation for Hamburger Icon */
-.hamburger-icon.open span:nth-child(1) {
-  transform: rotate(45deg);
-  transform-origin: top left;
-}
-
-.hamburger-icon.open span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger-icon.open span:nth-child(3) {
-  transform: rotate(-45deg);
-  transform-origin: bottom left;
-}
-
-/* Menu Links */
-.menu-links {
-  display: none;
-  position: absolute;
-  top: 60px; /* Adjust depending on your header height */
-  left: 0;
-  width: 100%;
-  background-color: #f4f4f4;
-  text-align: center;
-  z-index: 999;
-  transition: display 0.3s ease;
-}
-
-.menu-links.open {
-  display: block;
-}
-
-.menu-links ul {
-  list-style: none;
-  padding: 0;
-}
-
-.menu-links li {
-  margin: 1rem 0;
-}
-
-.menu-links a {
-  text-decoration: none;
-  color: #333;
-  font-size: 1.2rem;
-  transition: color 0.3s ease;
-}
-
-.menu-links a:hover {
-  color: #00509e;
-}
-
 /* Navigation Bar */
 nav {
   display: flex;
@@ -107,30 +27,16 @@ nav {
   height: 7vh;
 }
 
-/* Align the hamburger menu to the left */
-nav .hamburger-menu {
-  margin-left: 0; /* Align to the left */
-}
-
-/* Menu links for larger screens (invisible on mobile) */
-nav .nav-links {
-  display: flex;
-  gap: 1rem;
-}
-
-nav .nav-links li {
-  margin: 0;
-}
-
-nav .nav-links a {
+nav a{
+  cursor: pointer;
   text-decoration: none;
-  color: #333;
-  font-size: 1rem;
 }
 
-nav .nav-links a:hover {
-  color: #00509e;
+nav h3{
+  color:#333;
+  text-decoration: one;
 }
+
 
 section{
   padding-top: 4vh;
@@ -215,67 +121,93 @@ section{
   background-color: #003f7f;
 }
 
+
 /* FAQ Section */
+
+
 #faq {
-  padding: 50px 20px;
-  background-color: #f4f4f9;
+  padding: 50px 20px 100px 20px; /* Top, horizontal, and bottom padding */
+  background-color: #f4f4f9; /* Light grayish background */
   color: #333;
   margin-top: 50px;
+  position: relative;
 }
 
-#hidden{
-  color:#f4f4f9;
+#hidden {
+  color: #f4f4f9; /* Same color as background to hide it */
+  position: absolute;
+  top:10px;
 }
 
 #faq h2 {
   font-size: 32px;
   text-align: center;
+  margin-top: 5px;
   margin-bottom: 30px;
   color: #333;
 }
 
+/* Container for FAQ items */
 .faq-container {
   max-width: 800px;
-  margin: 0 auto;
+  margin: 0 auto; /* Center-align the FAQ container */
+  padding: 0 15px; /* Add some horizontal padding for small screens */
 }
 
+/* Individual FAQ Item Styling */
 .faq-item {
-  background-color: #fff;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff; /* White background for items */
+  border-radius: 8px; /* Rounded corners */
+  margin-bottom: 20px; /* Space between FAQ items */
+  padding: 20px; /* Internal padding for content */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
 }
 
+/* FAQ Item Title Styling */
 .faq-item h3 {
-  font-size: 24px;
-  margin-bottom: 10px;
-  color: #4CAF50; /* Green color for the question */
+  font-size: 24px; /* Slightly smaller title */
+  margin-bottom: 10px; /* Space below the title */
+  color: #4CAF50; /* Green for the question title */
 }
 
+/* FAQ Item Content Styling */
 .faq-item p {
-  font-size: 16px;
-  line-height: 1.6;
-  color: #555;
+  font-size: 16px; /* Smaller text for descriptions */
+  line-height: 1.6; /* Improved readability */
+  color: #555; /* Dark gray text color */
 }
 
+/* Hover Effect for FAQ Item */
 .faq-item:hover {
-  background-color: #e8f5e9; /* Light green hover effect */
+  background-color: #e8f5e9; /* Light green background on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
 }
 
-/* Mobile responsiveness */
+/* Responsive Design */
 @media (max-width: 768px) {
+  #faq h2 {
+    font-size: 28px; /* Smaller heading on smaller screens */
+  }
+
+  .faq-item h3 {
+    font-size: 20px; /* Reduce title size for mobile */
+  }
+
+  .faq-item p {
+    font-size: 14px; /* Reduce paragraph size for mobile */
+
   .faq-item {
     padding: 15px;
   }
 
   #faq {
-    padding: 30px 15px;
+    padding: 30px 15px 100px 15px;
   }
 
   .faq-item h3 {
     font-size: 20px;
-  }
+  }}
 }
 
 
@@ -434,30 +366,32 @@ button:hover {
 }
 
 
-
 /* Footer Section */
-footer {
+#footer-section {
   background-color: #f4f4f4;
   text-align: center;
   padding: 1rem;
+  padding-top: 2rem; /* Space above the footer section */
+  color: #333;
   font-size: 0.9rem;
-  color: #777;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  height: 8vh;
 }
 
-/* Mobile Styles */
-@media (max-width: 800px) {
-  /* Show hamburger menu on mobile */
-  .hamburger-menu {
-    display: flex; /* Display hamburger on mobile */
+/* FAQ Section */
+#faq {
+  margin-bottom: 2rem; /* Ensure there's consistent space between FAQ and footer */
+}
+
+/* Responsive Design for Small Screens */
+@media (max-width: 768px) {
+  #faq {
+    margin-bottom: 1.5rem; /* Adjust spacing for smaller screens */
   }
 
-  /* Hide the menu links on mobile */
-  .nav-links {
-    display: none;
-  }
-
-  /* Show menu links when hamburger is clicked */
-  .menu-links.open {
-    display: block;
+  #footer-section {
+    padding-top: 1.5rem; /* Slightly reduce padding on smaller screens */
   }
 }
