@@ -4,6 +4,7 @@ import { database } from "./firebase.js";
 import { ref, push } from "firebase/database";
 import { ref as sRef } from 'firebase/storage';
 import { generateText } from "./utils/api.js";
+import { saveUserInput } from "./firebase";
 
 
 function App() {
@@ -25,6 +26,9 @@ function App() {
       return;
     }
     try {
+      // Save user input to Firebase
+      await saveUserInput(inputValue);
+
       console.log("inputted value", inputValue)
       const response = await generateText(inputValue); // Call backend API
       setAiResponse(response);
