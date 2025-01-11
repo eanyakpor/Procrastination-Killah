@@ -1,199 +1,206 @@
 body {
-    font-family: Trebuchet MS;
-    margin: 0;
-  }
- 
-  .container {
-    max-width: 900px;
-    margin: 20px auto;
-    padding: 20px;
-  }
- 
-  h1 {
-    text-align: center;
-  }
- 
-  table {
-    width: 100%;
-    margin-top: 20px;
-    border-collapse: collapse;
-  }
- 
-  th, td {
-    padding: 10px;
-    font-size: 0.9rem;
-    border: 1px solid #ccc;
-  }
- 
-  th {
-    background-color: #f4f4f4;
-    text-align: center;
-  }
- 
-  #classificationSection {
-    margin-bottom: 20px;
-  }
- 
-  .classification-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-  }
- 
-  .classification-input {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-  }
- 
-  button {
-    padding: 5px 10px;
+  font-family: Trebuchet MS;
+  margin: 0%;
+}
+button.selected {
+    background-color: #4CAF50;  /* Green when selected */
+    color: white;
+}
+
+button {
+    padding: 10px 15px;
     margin: 5px;
+    border: none;
     cursor: pointer;
-  }
- 
-  button.plus-coursework {
-    background-color: #28a745;
-    color: white;
-    border-radius: 5px;
-    font-size: 1.5rem;
-    padding: 9px;
-    padding-top: 0px;
-    padding-bottom: 3px;
-    
-  }
- 
-  button.remove-coursework {
-    background-color: #f44336;
-    color: white;
-    border-radius: 5px;
-    font-size: 1.5rem;
-    padding: 9px;
-    padding-top: 0px;
-    padding-bottom: 3px;    
-  }
- 
-  button.add-classification {
-    background-color: #00509e;
-    color: white;
+    background-color: #f1f1f1;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  border: 1px solid #ccc;
+  font-size: 1.5rem;
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
+/* Button style */
+button {
+  padding: 5px 10px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+button.plus-coursework {
+  background-color: #28a745;
+  color: white;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  padding: 9px;
+  padding-top: 0px;
+  padding-bottom: 3px;
+  margin-right: 5px;
+}
+
+button.remove-coursework {
+  background-color: #f44336;
+  color: white;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  padding: 9px;
+  padding-top: 0px;
+  padding-bottom: 3px;
+}
+
+button.add-classification {
+  background-color: royalblue;
+  color: white;
+  border: none;
+  border-radius: 11px;
+  font-size: 1.3rem;
+  display: block;
+  margin: 0 auto;
+  margin-top: 7px;
+  font-family: 'Trebuchet MS';
+}
+
+button.minus-classification {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  padding: 9px;
+  padding-top: 0px;
+  padding-bottom: 3px;
+}
+
+button.add-coursework {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 11px;
+  font-size: .8rem;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 6px;
+  font-family: 'Trebuchet MS';
+}
+td {
+  text-align: center;
+}
+
+input {
+  font-family: 'Trebuchet MS';
+  padding: 8px;
+  width: 150px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+#generate-plan {
+  color: white;
+  background-color: #28a745;
+  border: none;
+  border-radius: 11px;
+  font-size: 1.5rem;
+  display: block;
+  margin: 0 auto;
+  margin-top: 7px;
+  font-family: 'Trebuchet MS';
+}
+
+header {
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+  width: 100%;
+}
+
+main {
+  padding: 2rem;
+}
+
+/* Coursework Table */
+.coursework-table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+.coursework-table th,
+.coursework-table td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.coursework-table th {
+  background-color: #f4f4f4;
+}
+
+.coursework-table th:nth-child(7), /* Header of the "Actions" column */
+.coursework-table td:nth-child(7) { /* All cells in the "Actions" column */
+    background-color: white;  
     border: none;
-    border-radius: 11px;
-    font-size: 1.3rem;
-    display: block;
-    margin: 20px auto;
-    font-family: 'Trebuchet MS';
-  }
- 
-  button.minus-classification {
-    background-color: #f44336;
-    color: white;
+    }
+
+.coursework-table th:nth-child(1), /* Header of the "Actions" column */
+.coursework-table td:nth-child(1) { /* All cells in the "Actions" column */
+    background-color: white;  
     border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    padding: 5px;
-  }
- 
-  button.add-coursework {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    margin: 10px auto;
-    font-family: 'Trebuchet MS';
-  }
- 
-  input {
-    font-family: 'Trebuchet MS';
-    padding: 8px;
-    width: 100px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 0.9rem;
-  }
- 
-  input:focus {
-    outline: none;
-    border-color: #007bff;
-  }
- 
-  #generate-plan {
-    color: white;
-    background-color: #28a745;
-    border: none;
-    border-radius: 11px;
-    font-size: 1.3rem;
-    display: block;
-    margin: 20px auto;
-    font-family: 'Trebuchet MS';
-  }
- 
-  header {
-    background-color: #4CAF50;
-    color: white;
-    text-align: center;
-    padding: 1rem 0;
-  }
- 
-  main {
-    padding: 20px;
-  }
- 
-  .coursework-table {
-    margin-top: 20px;
-    width: 100%;
-    border-collapse: collapse;
-  }
- 
-  .coursework-table th, .coursework-table td {
-    padding: 10px;
-    border: 1px solid #ccc;
-    text-align: center;
-  }
- 
-  .coursework-table th:nth-child(7),
-  .coursework-table td:nth-child(7) {
-    background-color: white;
-    border: none;
-  }
- 
-  .coursework-table th:nth-child(1),
-  .coursework-table td:nth-child(1) {
-    background-color: white;
-    border: none;
-  }
- 
-  #output-section {
-    background-color: #fff;
-    padding: 20px;
-    margin-top: 20px;
-    border-radius: 8px;
-  }
- 
-  #output-section table {
-    width: 100%;
-    border-collapse: collapse;
-  }
- 
-  #output-section th, #output-section td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: center;
-  }
- 
-  #output-section th {
-    background-color: #f4f4f4;
-  }
- 
-  .classification-item {
-    margin-bottom: 20px;
-    padding: 15px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-  }
- 
-  .coursework-section {
-    margin-top: 10px;
-  }
- 
+    }
+
+/* Output Section Styling */
+#output-section {
+  background-color: #fff;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  border: none;
+  border-radius: 8px;
+}
+
+#output-section table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#output-section th,
+#output-section td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+#output-section th {
+  background-color: #f4f4f4;
+}
